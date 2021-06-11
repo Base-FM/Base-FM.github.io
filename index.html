@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Loading Base FM Remote</title>
+		<style>
+			body {
+				background-color: #d2d7ab;
+				font-family: 'Titillium Web', sans-serif;
+			}
+			img {
+				display: none;
+			}
+			#error {
+				position: fixed;
+				width: 80%;
+				top: 50vh;
+				transform: translate(0px, -50%);
+				left: 10%;
+				display: none;
+				text-align: center;
+				font-size: 3em;
+			}
+		</style>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<script>
+			var errors = 0;
+			
+			function checkErrors() {
+				errors++;
+				console.log(errors);
+				if (errors == 4) {
+					document.getElementById("error").style.display = "block";
+				}
+			}
+		</script>
+		<img src="http://basefm-player/redirect.png" onError="document.getElementsByClassName('info')[0].innerHTML = 'local Hostname failed'; checkErrors()" onLoad="document.getElementsByClassName('info')[0].innerHTML = 'local Hostname succeeded'" />
+		<div class="info"></div>
+		<img src="http://192.168.3.147/redirect.png" onError="document.getElementsByClassName('info')[1].innerHTML = 'local IPv4 failed'; checkErrors()" onLoad="document.getElementsByClassName('info')[1].innerHTML = 'local IPv4 succeeded'" />
+		<div class="info"></div>
+		<img src="http://stream.basefm.co.nz:88/redirect.png" onError="document.getElementsByClassName('info')[2].innerHTML = 'external Base failed'; checkErrors()" onLoad="document.getElementsByClassName('info')[2].innerHTML = 'external Base succeeded'" />
+		<div class="info"></div>
+		<img src="http://basefm.eyezah.tk:88/redirect.png" onError="document.getElementsByClassName('info')[3].innerHTML = 'external Eyezah failed'; checkErrors()" onLoad="document.getElementsByClassName('info')[3].innerHTML = 'external Eyezah succeeded'" />
+		<div class="info"></div>
+		<h2 id="error">Could not connect to Base Remote</h2>
+		<!--<img src="http://stream.basefm.co.nz:88/redirect.png" onError="alert('local')" onLoad="alert('external')" />-->
+	</body>
+</html>
