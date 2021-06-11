@@ -39,6 +39,7 @@
 		<title>Base FM Remote</title>
 	</head>
 	<body>
+		<div id="imgc"></div>
 		<script>
 			var errors = 0;
 			
@@ -49,15 +50,36 @@
 					document.getElementById("error").style.display = "block";
 				}
 			}
+			var time = new Date().getTime();
+			console.log(time);
+			
+			var urls = [
+				"http://basefm-player",
+				"http://192.168.3.147",
+				"http://stream.basefm.co.nz:88",
+				"http://basefm.eyezah.tk:88"
+			];
+			var names = [
+				"local hostname",
+				"local ipv4",
+				"external base",
+				"external eyezah"
+			]
+			
+			var imgc = document.getElementById("imgc");
+			var i = 0;
+			while (i < urls.length) {
+				imgc.innerHTML += "<img class=img onError=\"document.getElementsByClassName('info')[" + i + "].innerHTML = '" + names[i] + " failed'; checkErrors()\" onLoad=\"document.getElementsByClassName('info')[" + i + "].innerHTML = '" + names[i] + " succeeded'; window.location = '" + urls[i] + "'\" /><div class=\"info\"></div>";
+				document.getElementsByClassName("img")[i].src = urls[i] + "/redirect.png";
+				
+				
+				
+				
+				
+				i++;
+			}
+			
 		</script>
-		<img src="http://basefm-player/redirect.png" onError="document.getElementsByClassName('info')[0].innerHTML = 'local Hostname failed'; checkErrors()" onLoad="document.getElementsByClassName('info')[0].innerHTML = 'local Hostname succeeded'; window.location = 'http://basefm-player'" />
-		<div class="info"></div>
-		<img src="http://192.168.3.147/redirect.png" onError="document.getElementsByClassName('info')[1].innerHTML = 'local IPv4 failed'; checkErrors()" onLoad="document.getElementsByClassName('info')[1].innerHTML = 'local IPv4 succeeded'; window.location = 'http://192.168.3.147'" />
-		<div class="info"></div>
-		<img src="http://stream.basefm.co.nz:88/redirect.png" onError="document.getElementsByClassName('info')[2].innerHTML = 'external Base failed'; checkErrors()" onLoad="document.getElementsByClassName('info')[2].innerHTML = 'external Base succeeded'; window.location = 'http://stream.basefm.co.nz:88'" />
-		<div class="info"></div>
-		<img src="http://basefm.eyezah.tk:88/redirect.png" onError="document.getElementsByClassName('info')[3].innerHTML = 'external Eyezah failed'; checkErrors()" onLoad="document.getElementsByClassName('info')[3].innerHTML = 'external Eyezah succeeded'; window.location = 'http://basefm.eyezah.tk:88'" />
-		<div class="info"></div>
 		<h2 id="error">Could not connect to Base Remote</h2>
 		<!--<img src="http://stream.basefm.co.nz:88/redirect.png" onError="alert('local')" onLoad="alert('external')" />-->
 	</body>
