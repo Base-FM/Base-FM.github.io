@@ -19,6 +19,25 @@
 				text-align: center;
 				font-size: 3em;
 			}
+			noscript {
+				position: fixed;
+				width: 100%;
+				height: 100vh;
+				background-color: #d2d7ab;
+				top: 0px;
+				left: 0px;
+			}
+			
+			noscript h2 {
+				position: fixed;
+				width: 80%;
+				top: 50vh;
+				transform: translate(0px, -50%);
+				left: 10%;
+				display: none;
+				text-align: center;
+				font-size: 3em;
+			}
 		</style>
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
@@ -39,6 +58,9 @@
 		<title>Base FM Remote</title>
 	</head>
 	<body>
+		<noscript>
+			<h2>Enable Javascript</h2>
+		</noscript>
 		<div id="imgc"></div>
 		<script>
 			var errors = 0;
