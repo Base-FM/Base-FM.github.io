@@ -51,7 +51,6 @@
 				}
 			}
 			var time = new Date().getTime();
-			console.log(time);
 			
 			var urls = [
 				"http://basefm-player",
@@ -70,7 +69,7 @@
 			var i = 0;
 			while (i < urls.length) {
 				imgc.innerHTML += "<img class=img onError=\"document.getElementsByClassName('info')[" + i + "].innerHTML = '" + names[i] + " failed'; checkErrors()\" onLoad=\"document.getElementsByClassName('info')[" + i + "].innerHTML = '" + names[i] + " succeeded'; window.location = '" + urls[i] + "'\" /><div class=\"info\"></div>";
-				document.getElementsByClassName("img")[i].src = urls[i] + "/redirect.png";
+				document.getElementsByClassName("img")[i].src = urls[i] + "/redirect.png?time=" + time;
 				
 				
 				
